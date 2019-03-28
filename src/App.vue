@@ -2,8 +2,9 @@
   <div class="training">
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training</h1>
-    <hr>
-    <AppStartScreen v-if="state === 'start'"/>
+    <hr/>
+    <AppStartScreen v-if="state === 'start'"
+                    v-on:onClickBtnStartFromChild="changeState"/>
     <AppQuestion v-else-if="state === 'question'"/>
     <AppMessage v-else-if="state === 'message'"/>
     <AppResultScreen v-else-if="state === 'results'"/>
@@ -13,13 +14,19 @@
 
 <script>
   export default {
-    name: 'app',
+    name: "app",
     data() {
       return {
-        state: 'start'
+        state: "start"
       };
+    },
+    //методы компонента
+    methods: {
+      changeState() {
+        this.state = "question";
+      }
     }
   };
 </script>
 
-<style src='./assets/stylesheets/App.css'></style>
+<style src="./assets/stylesheets/App.css"></style>

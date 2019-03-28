@@ -9,3 +9,7 @@ body {
   max-width: 700px;
   margin: 20px auto;
 }
+
+h3 {
+  font-size: 20px;
+}
