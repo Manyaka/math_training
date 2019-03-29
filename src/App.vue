@@ -12,7 +12,11 @@
       v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
       v-on:onGetErrorFromChild="changeToMessageDivError"
     />
-    <AppMessage v-else-if="state === 'message'"/>
+    <AppMessage
+      v-else-if="state === 'message'"
+      v-bind:type="message.type"
+      v-bind:text="message.text"
+    />
     <AppResultScreen v-else-if="state === 'results'"/>
     <div v-else>Неизвестный state</div>
   </div>
@@ -23,7 +27,11 @@
     name: "app",
     data() {
       return {
-        state: "start"
+        state: "start",
+        message: {
+          type: "",
+          text: ""
+        }
       };
     },
     //методы компонента
@@ -35,10 +43,14 @@
       //показываем успешное сообщение
       changeToMessageDivSuccess() {
         this.state = "message";
+        this.message.type = 'success';
+        this.message.text = 'Вы правильно ответили 👍🏼';
       },
       //показываем сообщение об ошибке
       changeToMessageDivError(msg) {
         this.state = "message";
+        this.message.type = 'warning';
+        this.message.text = `Неправильно, ${msg}`;
       }
     }
   };

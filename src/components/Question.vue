@@ -59,7 +59,7 @@
           this.$emit('onGetSuccessFromChild');
         } else {
           this.$emit('onGetErrorFromChild',
-            `${this.x} + ${this.y}} = ${this.good}!`);
+            `${this.x} + ${this.y} = ${this.good}!`);
         }
       }
     }
