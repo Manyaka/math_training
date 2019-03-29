@@ -3,15 +3,16 @@
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training</h1>
     <hr/>
-    <!--можно сделать отдельным компонентом-->
+    <!--TODO можно сделать отдельным компонентом-->
     <div class="progress">
       <div class="progress-bar" v-bind:style="progressStyles"></div>
     </div>
     <div class="box">
+      <!--TODO from child заменить на имя компонента-->
       <transition name="flip" mode="out-in">
         <AppStartScreen
           v-if="state === 'start'"
-          v-on:onClickBtnStartFromChild="changeToQuestionDiv"
+          v-on:onClickBtnStartFromChild="changeToStart"
         />
         <AppQuestion
           v-else-if="state === 'question'"
@@ -22,9 +23,14 @@
           v-else-if="state === 'message'"
           v-bind:type="message.type"
           v-bind:text="message.text"
-          v-on:onClickBtnContinueFromChild="changeToQuestionDiv"
+          v-on:onClickBtnContinueFromChild="changeToQuestionOrResultDiv"
         />
-        <AppResultScreen v-else-if="state === 'results'"/>
+        <AppResultScreen
+          v-else-if="state === 'result'"
+          v-bind:stats="stats"
+          v-on:onClickBtnRepeatFromChild="changeToStart"
+          v-on:onClickBtnNextLevelFromChild="changeToQuestionOrResultDiv"
+        />
         <div v-else>Неизвестный state</div>
       </transition>
     </div>
@@ -60,9 +66,19 @@
     },
     //методы компонента
     methods: {
-      //переходим к вопросу
-      changeToQuestionDiv() {
+      //начинаем сначала
+      changeToStart() {
         this.state = "question";
+        this.stats.success = 0;
+        this.stats.error = 0;
+      },
+      //переходим к вопросу или показываем результат
+      changeToQuestionOrResultDiv() {
+        if (this.questionDone < this.questionMax) {
+          this.state = "question";
+        } else {
+          this.state = "result";
+        }
       },
       //показываем успешное сообщение
       changeToMessageDivSuccess() {

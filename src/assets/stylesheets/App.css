@@ -14,6 +14,11 @@ h3 {
   font-size: 20px;
 }
 
+h3,
+.btn {
+  margin: 1em 0;
+}
+
 .box {
   margin: 1em 0;
 }

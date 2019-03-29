@@ -1,6 +1,7 @@
 <template>
   <div class="alert" v-bind:class="'alert-' + type">
     <h3>{{ text }}</h3>
+    <!--TODO изменять кнопку, когда закончили-->
     <button class="btn btn-primary"
             v-on:click="$emit('onClickBtnContinueFromChild')">
       Продолжить
@@ -11,6 +12,7 @@
 <script>
   export default {
     name: "Message",
+    //TODO поменять на message
     props: ["type", "text"]
   };
 </script>
