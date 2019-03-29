@@ -1,7 +1,10 @@
 <template>
   <div class="alert" v-bind:class="'alert-' + type">
     <h3>{{ text }}</h3>
-    <button class="btn btn-primary">Продолжить</button>
+    <button class="btn btn-primary"
+            v-on:click="$emit('onClickBtnContinueFromChild')">
+      Продолжить
+    </button>
   </div>
 </template>
 

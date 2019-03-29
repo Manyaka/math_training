@@ -16,6 +16,7 @@
       v-else-if="state === 'message'"
       v-bind:type="message.type"
       v-bind:text="message.text"
+      v-on:onClickBtnContinueFromChild="changeToQuestionDiv"
     />
     <AppResultScreen v-else-if="state === 'results'"/>
     <div v-else>Неизвестный state</div>
@@ -31,8 +32,17 @@
         message: {
           type: "",
           text: ""
+        },
+        stats: {
+          success: 0,
+          error: 0
         }
       };
+    },
+    computed: {
+      questionDone() {
+        return this.stats.success + this.stats.error;
+      }
     },
     //методы компонента
     methods: {
@@ -43,13 +53,13 @@
       //показываем успешное сообщение
       changeToMessageDivSuccess() {
         this.state = "message";
-        this.message.type = 'success';
-        this.message.text = 'Вы правильно ответили 👍🏼';
+        this.message.type = "success";
+        this.message.text = "Вы правильно ответили 👍🏼";
       },
       //показываем сообщение об ошибке
       changeToMessageDivError(msg) {
         this.state = "message";
-        this.message.type = 'warning';
+        this.message.type = "warning";
         this.message.text = `Неправильно, ${msg}`;
       }
     }
