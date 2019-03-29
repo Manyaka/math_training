@@ -1,7 +1,7 @@
 <template>
   <div class="training">
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
-    <h1>Math training</h1>
+    <h1>Math training. Уровень {{ level + 1 }}</h1>
     <hr/>
     <!--TODO можно сделать отдельным компонентом-->
     <div class="progress">
@@ -16,6 +16,7 @@
         />
         <AppQuestion
           v-else-if="state === 'question'"
+          v-bind:settings="levels[level]"
           v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
           v-on:onGetErrorFromChild="changeToMessageDivError"
         />
@@ -29,7 +30,7 @@
           v-else-if="state === 'result'"
           v-bind:stats="stats"
           v-on:onClickBtnRepeatFromChild="changeToStart"
-          v-on:onClickBtnNextLevelFromChild="changeToQuestionOrResultDiv"
+          v-on:onClickBtnNextLevelFromChild="onNextLevel"
         />
         <div v-else>Неизвестный state</div>
       </transition>
@@ -43,15 +44,35 @@
     data() {
       return {
         state: "start",
+        //сообщения успешности/ошибочности
         message: {
           type: "",
           text: ""
         },
+        //статистика
         stats: {
           success: 0,
           error: 0
         },
-        questionMax: 3
+        //количество вопросов
+        questionMax: 3,
+        //уровни прохождения
+        level: 0,
+        //TODO можно доделать другие варианты, также можно ограничить время ответа
+        levels: [
+          {
+            from: 1,
+            to: 20,
+            range: 10,
+            variants: 2
+          },
+          {
+            from: 50,
+            to: 100,
+            range: 25,
+            variants: 4
+          }
+        ]
       };
     },
     computed: {
@@ -93,6 +114,11 @@
         this.message.type = "warning";
         this.message.text = `Неправильно, ${msg}`;
         this.stats.error++;
+      },
+      //TODO а 3-го уровня нет
+      onNextLevel() {
+        this.level++;
+        this.changeToStart();
       }
     }
   };

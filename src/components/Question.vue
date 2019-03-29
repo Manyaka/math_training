@@ -22,11 +22,12 @@
 
   export default {
     name: "Question",
+    props: ["settings"],
     data() {
       return {
         //заполняем числа рандомно
-        x: mtRand(1, 20),
-        y: mtRand(1, 20)
+        x: mtRand(this.settings.from, this.settings.to),
+        y: mtRand(this.settings.from, this.settings.to)
       };
     },
     computed: {
@@ -37,8 +38,11 @@
       answers() {
         let res = [this.good];
         //заполняем массив другими приблизительными вариантами рандомно
-        while (res.length < 4) {
-          let num = mtRand(this.good - 10, this.good + 10);
+        while (res.length < this.settings.variants) {
+          let num = mtRand(
+            this.good - this.settings.range,
+            this.good + this.settings.range
+          );
 
           if (res.indexOf(num) === -1) {
             res.push(num);
@@ -56,10 +60,12 @@
       //проверяем правильность ответа
       onAnswer(num) {
         if (num === this.good) {
-          this.$emit('onGetSuccessFromChild');
+          this.$emit("onGetSuccessFromChild");
         } else {
-          this.$emit('onGetErrorFromChild',
-            `${this.x} + ${this.y} = ${this.good}!`);
+          this.$emit(
+            "onGetErrorFromChild",
+            `${this.x} + ${this.y} = ${this.good}!`
+          );
         }
       }
     }
