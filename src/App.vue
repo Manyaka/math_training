@@ -3,6 +3,10 @@
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training</h1>
     <hr/>
+    <!--можно сделать отдельным компонентом-->
+    <div class="progress">
+      <div class="progress-bar" v-bind:style="progressStyles"></div>
+    </div>
     <div class="box">
       <transition name="flip" mode="out-in">
         <AppStartScreen
@@ -40,12 +44,18 @@
         stats: {
           success: 0,
           error: 0
-        }
+        },
+        questionMax: 3
       };
     },
     computed: {
       questionDone() {
         return this.stats.success + this.stats.error;
+      },
+      progressStyles() {
+        return {
+          width: (this.questionDone / this.questionMax) * 100 + "%"
+        };
       }
     },
     //методы компонента
@@ -59,12 +69,14 @@
         this.state = "message";
         this.message.type = "success";
         this.message.text = "Вы правильно ответили 👍🏼";
+        this.stats.success++;
       },
       //показываем сообщение об ошибке
       changeToMessageDivError(msg) {
         this.state = "message";
         this.message.type = "warning";
         this.message.text = `Неправильно, ${msg}`;
+        this.stats.error++;
       }
     }
   };
