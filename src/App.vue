@@ -3,23 +3,27 @@
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training</h1>
     <hr/>
-    <AppStartScreen
-      v-if="state === 'start'"
-      v-on:onClickBtnStartFromChild="changeToQuestionDiv"
-    />
-    <AppQuestion
-      v-else-if="state === 'question'"
-      v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
-      v-on:onGetErrorFromChild="changeToMessageDivError"
-    />
-    <AppMessage
-      v-else-if="state === 'message'"
-      v-bind:type="message.type"
-      v-bind:text="message.text"
-      v-on:onClickBtnContinueFromChild="changeToQuestionDiv"
-    />
-    <AppResultScreen v-else-if="state === 'results'"/>
-    <div v-else>Неизвестный state</div>
+    <div class="box">
+      <transition name="flip" mode="out-in">
+        <AppStartScreen
+          v-if="state === 'start'"
+          v-on:onClickBtnStartFromChild="changeToQuestionDiv"
+        />
+        <AppQuestion
+          v-else-if="state === 'question'"
+          v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
+          v-on:onGetErrorFromChild="changeToMessageDivError"
+        />
+        <AppMessage
+          v-else-if="state === 'message'"
+          v-bind:type="message.type"
+          v-bind:text="message.text"
+          v-on:onClickBtnContinueFromChild="changeToQuestionDiv"
+        />
+        <AppResultScreen v-else-if="state === 'results'"/>
+        <div v-else>Неизвестный state</div>
+      </transition>
+    </div>
   </div>
 </template>
 

@@ -13,3 +13,35 @@ body {
 h3 {
   font-size: 20px;
 }
+
+.flip-enter {
+}
+
+.flip-enter-active {
+  animation: flipInX 0.3s linear;
+}
+
+.flip-leave {
+}
+
+.flip-leave-active {
+  animation: flipOutX 0.3s linear;
+}
+
+@keyframes flipInX {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes flipOutX {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(90deg);
+  }
+}
