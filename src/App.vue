@@ -115,7 +115,8 @@
         this.message.text = `Неправильно, ${msg}`;
         this.stats.error++;
       },
-      //TODO а 3-го уровня нет
+      //TODO а 3-го уровня нет, сделать общую статистику, сделать допуск на след уровень
+      //по 0 error
       onNextLevel() {
         this.level++;
         this.changeToStart();
