@@ -13,7 +13,7 @@
     name: 'StartScreen',
     methods: {
     }
-  };
+  }
 </script>
 
 <style scoped src="./StartScreen.css"></style>

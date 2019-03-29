@@ -1,11 +1,11 @@
 <template>
-  <div>4</div>
+  <div class="alert alert-secondary">4</div>
 </template>
 
 <script>
   export default {
     name: "ResultScreen"
-  };
+  }
 </script>
 
 <style scoped src="./ResultScreen.css"></style>

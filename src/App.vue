@@ -3,9 +3,15 @@
     <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training</h1>
     <hr/>
-    <AppStartScreen v-if="state === 'start'"
-                    v-on:onClickBtnStartFromChild="changeState"/>
-    <AppQuestion v-else-if="state === 'question'"/>
+    <AppStartScreen
+      v-if="state === 'start'"
+      v-on:onClickBtnStartFromChild="changeToQuestionDiv"
+    />
+    <AppQuestion
+      v-else-if="state === 'question'"
+      v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
+      v-on:onGetErrorFromChild="changeToMessageDivError"
+    />
     <AppMessage v-else-if="state === 'message'"/>
     <AppResultScreen v-else-if="state === 'results'"/>
     <div v-else>Неизвестный state</div>
@@ -22,8 +28,17 @@
     },
     //методы компонента
     methods: {
-      changeState() {
+      //переходим к вопросу
+      changeToQuestionDiv() {
         this.state = "question";
+      },
+      //показываем успешное сообщение
+      changeToMessageDivSuccess() {
+        this.state = "message";
+      },
+      //показываем сообщение об ошибке
+      changeToMessageDivError(msg) {
+        this.state = "message";
       }
     }
   };
