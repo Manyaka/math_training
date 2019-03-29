@@ -1,0 +1,56 @@
+@import "~normalize.css/normalize.css";
+@import "reset.css";
+
+body {
+  font: 18px/1.3 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.training {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h3,
+.btn {
+  margin: 1em 0;
+}
+
+.box {
+  margin: 1em 0;
+}
+
+.flip-enter {
+}
+
+.flip-enter-active {
+  animation: flipInX 0.3s linear;
+}
+
+.flip-leave {
+}
+
+.flip-leave-active {
+  animation: flipOutX 0.3s linear;
+}
+
+@keyframes flipInX {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes flipOutX {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(90deg);
+  }
+}
