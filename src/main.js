@@ -2,15 +2,15 @@ import Vue from "vue";
 import App from "./App.vue";
 
 //глобальная регистрация компонентов
-import AppMessage from "./components/Message.vue";
-import AppQuestion from "./components/Question.vue";
-import AppResultScreen from "./components/ResultScreen.vue";
-import AppStartScreen from "./components/StartScreen.vue";
+import Message from "./components/Message.vue";
+import Question from "./components/Question.vue";
+import ResultScreen from "./components/ResultScreen.vue";
+import StartScreen from "./components/StartScreen.vue";
 
-Vue.component('AppMessage', AppMessage);
-Vue.component('AppQuestion', AppQuestion);
-Vue.component('AppResultScreen', AppResultScreen);
-Vue.component('AppStartScreen', AppStartScreen);
+Vue.component('Message', Message);
+Vue.component('Question', Question);
+Vue.component('ResultScreen', ResultScreen);
+Vue.component('StartScreen', StartScreen);
 
 Vue.config.productionTip = false;
 

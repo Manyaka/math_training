@@ -1,7 +1,12 @@
 {
   "name": "math_training",
-  "version": "0.1.0",
   "private": true,
+  "author": "Maria Nag <manyaknag@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Manyaka/math_training.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
@@ -11,8 +16,8 @@
     "vue": "^2.6.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
+    "@vue/cli-plugin-babel": "3.9.2",
+    "@vue/cli-service": "3.9.2",
     "vue-template-compiler": "^2.5.21"
   }
 }

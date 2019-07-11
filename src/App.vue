@@ -1,38 +1,40 @@
 <template>
   <div class="training">
-    <!--<img alt="Vue logo" src="./assets/img/logo.png">-->
     <h1>Math training. Уровень {{ level + 1 }}</h1>
     <hr/>
+
     <!--TODO можно сделать отдельным компонентом-->
     <div class="progress">
       <div class="progress-bar" v-bind:style="progressStyles"></div>
     </div>
+
     <div class="box">
-      <!--TODO from child заменить на имя компонента-->
+      <!--TODO FromChild заменить на имя компонента?-->
       <transition name="flip" mode="out-in">
-        <AppStartScreen
+        <StartScreen
           v-if="state === 'start'"
-          v-on:onClickBtnStartFromChild="changeToStart"
-        />
-        <AppQuestion
+          v-on:onClickBtnStartFromChild="changeToStart" />
+
+        <Question
           v-else-if="state === 'question'"
           v-bind:settings="levels[level]"
           v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
-          v-on:onGetErrorFromChild="changeToMessageDivError"
-        />
-        <AppMessage
+          v-on:onGetErrorFromChild="changeToMessageDivError" />
+
+        <Message
           v-else-if="state === 'message'"
           v-bind:type="message.type"
           v-bind:text="message.text"
-          v-on:onClickBtnContinueFromChild="changeToQuestionOrResultDiv"
-        />
-        <AppResultScreen
+          v-on:onClickBtnContinueFromChild="changeToQuestionOrResultDiv" />
+
+        <ResultScreen
           v-else-if="state === 'result'"
           v-bind:stats="stats"
           v-on:onClickBtnRepeatFromChild="changeToStart"
-          v-on:onClickBtnNextLevelFromChild="onNextLevel"
-        />
+          v-on:onClickBtnNextLevelFromChild="onNextLevel" />
+
         <div v-else>Неизвестный state</div>
+
       </transition>
     </div>
   </div>
@@ -40,7 +42,7 @@
 
 <script>
   export default {
-    name: "app",
+    name: "App",
     data() {
       return {
         state: "start",
