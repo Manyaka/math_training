@@ -3,7 +3,7 @@
     <h3>{{ text }}</h3>
     <!--TODO изменять кнопку, когда закончили-->
     <button class="btn btn-primary"
-            v-on:click="$emit('onClickBtnContinueFromChild')">
+            v-on:click="$emit('on-click-btn-continue-from-child')">
       Продолжить
     </button>
   </div>

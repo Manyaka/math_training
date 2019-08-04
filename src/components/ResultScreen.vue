@@ -4,11 +4,11 @@
     <h3>Ошибочных ответов: {{ stats.error }}</h3>
     <div class="buttons">
       <button class="btn btn-primary"
-              v-on:click="$emit('onClickBtnRepeatFromChild')">
+              v-on:click="$emit('on-click-btn-repeat-from-child')">
         Потренироваться ещё раз
       </button>
       <button class="btn btn-primary"
-              v-on:click="$emit('onClickBtnNextLevelFromChild')">
+              v-on:click="$emit('on-click-btn-next-level-from-child')">
         Следующий уровень
       </button>
     </div>

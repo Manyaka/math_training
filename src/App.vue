@@ -13,25 +13,25 @@
       <transition name="flip" mode="out-in">
         <StartScreen
           v-if="state === 'start'"
-          v-on:onClickBtnStartFromChild="changeToStart" />
+          v-on:on-click-btn-start-from-child="changeToStart" />
 
         <Question
           v-else-if="state === 'question'"
           v-bind:settings="levels[level]"
-          v-on:onGetSuccessFromChild="changeToMessageDivSuccess"
-          v-on:onGetErrorFromChild="changeToMessageDivError" />
+          v-on:on-get-success-from-child="changeToMessageDivWithSuccess"
+          v-on:on-get-error-from-child="changeToMessageDivWithError" />
 
         <Message
           v-else-if="state === 'message'"
           v-bind:type="message.type"
           v-bind:text="message.text"
-          v-on:onClickBtnContinueFromChild="changeToQuestionOrResultDiv" />
+          v-on:on-click-btn-continue-from-child="changeToQuestionOrResultDiv" />
 
         <ResultScreen
           v-else-if="state === 'result'"
           v-bind:stats="stats"
-          v-on:onClickBtnRepeatFromChild="changeToStart"
-          v-on:onClickBtnNextLevelFromChild="onNextLevel" />
+          v-on:on-click-btn-repeat-from-child="changeToStart"
+          v-on:on-click-btn-next-level-from-child="onNextLevel" />
 
         <div v-else>Неизвестный state</div>
 
@@ -104,14 +104,14 @@
         }
       },
       //показываем успешное сообщение
-      changeToMessageDivSuccess() {
+      changeToMessageDivWithSuccess() {
         this.state = "message";
         this.message.type = "success";
         this.message.text = "Вы правильно ответили 👍🏼";
         this.stats.success++;
       },
       //показываем сообщение об ошибке
-      changeToMessageDivError(msg) {
+      changeToMessageDivWithError(msg) {
         this.state = "message";
         this.message.type = "warning";
         this.message.text = `Неправильно, ${msg}`;

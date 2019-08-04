@@ -60,10 +60,10 @@
       //проверяем правильность ответа
       onAnswer(num) {
         if (num === this.good) {
-          this.$emit("onGetSuccessFromChild");
+          this.$emit("on-get-success-from-child");
         } else {
           this.$emit(
-            "onGetErrorFromChild",
+            "on-get-error-from-child",
             `${this.x} + ${this.y} = ${this.good}!`
           );
         }
