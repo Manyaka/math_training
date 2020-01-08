@@ -127,4 +127,4 @@
   };
 </script>
 
-<style src="./assets/stylesheets/App.css"></style>
+<style src="./assets/stylesheets/App.css" />

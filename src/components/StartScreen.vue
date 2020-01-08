@@ -16,4 +16,4 @@
   }
 </script>
 
-<style scoped src="./StartScreen.css"></style>
+<style scoped src="./StartScreen.css" />

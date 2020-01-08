@@ -22,4 +22,4 @@
   };
 </script>
 
-<style scoped src="./ResultScreen.css"></style>
+<style scoped src="./ResultScreen.css" />

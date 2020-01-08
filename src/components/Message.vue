@@ -17,4 +17,4 @@
   };
 </script>
 
-<style scoped src="./Message.css"></style>
+<style scoped src="./Message.css" />

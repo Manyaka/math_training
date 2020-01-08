@@ -72,4 +72,4 @@
   };
 </script>
 
-<style scoped src="./Question.css"></style>
+<style scoped src="./Question.css" />
